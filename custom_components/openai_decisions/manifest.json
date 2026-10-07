@@ -11,5 +11,5 @@
   "issue_tracker": "https://github.com/mattvv/openai-decisions-home-assistant/issues",
   "loggers": ["custom_components.openai_decisions"],
   "requirements": [],
-  "version": "0.1.0"
+  "version": "0.1.1"
 }
