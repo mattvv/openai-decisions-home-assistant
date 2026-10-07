@@ -1,0 +1,7 @@
+{
+  "name": "OpenAI Decisions",
+  "zip_release": true,
+  "filename": "openai_decisions.zip",
+  "hide_default_branch": true,
+  "homeassistant": "2025.8.0"
+}

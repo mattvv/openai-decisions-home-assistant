@@ -1,0 +1,40 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Enter an OpenAI Platform API key (pay-as-you-go; ChatGPT plans do not cover the API).",
+        "data": { "api_key": "API key" }
+      },
+      "reauth_confirm": {
+        "description": "OpenAI rejected the stored API key. Enter a new one.",
+        "data": { "api_key": "API key" }
+      }
+    },
+    "error": {
+      "invalid_auth": "OpenAI rejected this API key.",
+      "cannot_connect": "Could not reach the OpenAI API."
+    },
+    "abort": {
+      "already_configured": "This API key is already set up.",
+      "reauth_successful": "API key updated."
+    }
+  },
+  "services": {
+    "decide": {
+      "name": "Decide",
+      "description": "Ask OpenAI's Decisions API questions about text and camera images. Returns a probability per predicate, the picked option and per-option probabilities per choice, and a weighted score per score question.",
+      "fields": {
+        "questions": {
+          "name": "Questions",
+          "description": "List of questions. Each needs name, instructions and type (predicate, the default; choice, with choices; or score, with ordered levels). Choices and levels can be plain strings or objects with value/label and description."
+        },
+        "text": { "name": "Text", "description": "Context sent with the images, or the whole input when there are no images." },
+        "camera_entity_id": { "name": "Cameras", "description": "Cameras to take a snapshot from. Each frame is sent inline." },
+        "image_path": { "name": "Image files", "description": "Local image files to send (must be in allowlist_external_dirs)." },
+        "model": { "name": "Model", "description": "Decisions model." },
+        "timeout": { "name": "Timeout", "description": "Seconds to wait for the API." },
+        "config_entry_id": { "name": "Config entry", "description": "Which API key to use, if you set up more than one." }
+      }
+    }
+  }
+}

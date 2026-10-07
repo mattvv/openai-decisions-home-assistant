@@ -1,0 +1,7 @@
+{
+  "services": {
+    "decide": {
+      "service": "mdi:scale-balance"
+    }
+  }
+}

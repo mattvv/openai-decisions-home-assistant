@@ -1,0 +1,23 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  zip:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check manifest version matches tag
+        run: |
+          v=$(jq -r .version custom_components/openai_decisions/manifest.json)
+          [ "$v" = "${GITHUB_REF_NAME#v}" ] || { echo "manifest $v != tag $GITHUB_REF_NAME"; exit 1; }
+      - name: Zip
+        run: cd custom_components/openai_decisions && zip -r ../../openai_decisions.zip . -x '__pycache__/*'
+      - run: gh release upload "$GITHUB_REF_NAME" openai_decisions.zip --clobber
+        env:
+          GH_TOKEN: ${{ github.token }}

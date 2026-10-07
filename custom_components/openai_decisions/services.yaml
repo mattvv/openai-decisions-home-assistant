@@ -1,0 +1,37 @@
+decide:
+  fields:
+    questions:
+      required: true
+      example: >-
+        [{"type": "predicate", "name": "package", "instructions": "Is a delivered package on the porch floor?"}]
+      selector:
+        object:
+    text:
+      example: Doorbell camera frame of a front porch.
+      selector:
+        text:
+          multiline: true
+    camera_entity_id:
+      selector:
+        entity:
+          domain: camera
+          multiple: true
+    image_path:
+      selector:
+        text:
+          multiple: true
+    model:
+      default: gpt-6-luna
+      selector:
+        text:
+    timeout:
+      default: 15
+      selector:
+        number:
+          min: 1
+          max: 120
+          unit_of_measurement: s
+    config_entry_id:
+      selector:
+        config_entry:
+          integration: openai_decisions
